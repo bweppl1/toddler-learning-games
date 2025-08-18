@@ -2,9 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/**/*",
+      "src": "client/src/main.jsx",
       "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
+      "config": { "distDir": "client/dist" }
     }
   ],
   "routes": [
