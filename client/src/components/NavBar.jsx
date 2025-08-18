@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ currentUser }) => {
   return (
     <div className="navBar">
       <h1>
         <Link to="/" className="title">
-          Rayelle's Games
+          {currentUser.toUpperCase()}'s Games
         </Link>
       </h1>
 

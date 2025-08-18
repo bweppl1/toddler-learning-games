@@ -28,6 +28,10 @@ body {
   min-height: 100vh;
 }
 
+div.body {
+  display: flex;
+}
+
 a {
   text-decoration: none;
 }
@@ -51,13 +55,11 @@ div.navBar {
   background-color: var(--background);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  box-shadow: 2px 2px 5px rgba(233, 43, 131, 0.05);
 }
 
 ul.navLinks {
   display: flex;
-  margin: 0 auto;
 }
 
 button.navLink {
@@ -80,6 +82,72 @@ div.pages {
   margin: auto;
 }
 
+/* HOME */
+
+div.Home {
+  text-align: center;
+}
+
+button.rayelle {
+  background-color: var(--purple);
+}
+
+button.rayelle:hover {
+  background-color: lightsalmon;
+}
+
+button.abigail {
+  background-color: var(--green);
+}
+
+button.abigail:hover {
+  background-color: lightgreen;
+}
+
+button.abigail, button.rayelle {
+  padding: 15px 30px;
+  font-size: 2rem;
+  border-radius: 15px;
+  border: 0;
+  margin: 15px;
+}
+
+/* USER STATS  */
+
+div.userStats {
+  width: 15%;
+}
+
+div.pipDisplay {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.statDisplay {
+  display: flex;
+  flex-direction: column;
+}
+
+div.pip {
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 5px;
+}
+
+div.full {
+  background-color: var(--green);
+}
+
+div.levelDisplay h1 {
+  margin: 0 15px;
+}
+
+h3 {
+  margin: 10px;
+}
 
 /* TYPING GAME  */
 

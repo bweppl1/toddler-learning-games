@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/word_completed.wav";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 
-const SpellingGame = () => {
+const SpellingGame = ({ addPoints }) => {
   const [wordToSpell, setWordToSpell] = useState("");
   const [previousWord, setPreviousWord] = useState("");
   const [userSpelling, setUserSpelling] = useState("");
@@ -16,7 +16,7 @@ const SpellingGame = () => {
   });
 
   const words = [
-    "tooth",
+    "apple",
     "mom",
     "dad",
     "fish",
@@ -50,6 +50,7 @@ const SpellingGame = () => {
         message: "Correct!",
         isCorrect,
       });
+      addPoints(1);
 
       setTimeout(() => {
         generateWord();

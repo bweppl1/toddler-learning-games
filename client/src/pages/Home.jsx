@@ -1,20 +1,16 @@
-import { Link } from "react-router-dom";
-
-const Home = () => {
+const Home = ({ onUserChange }) => {
   return (
     <div className="Home">
-      <h2>Choose Your Game:</h2>
-      <ul>
-        <li>
-          <Link to="/typing">Typing</Link>
-        </li>
-        <li>
-          <Link to="/spelling">Spelling</Link>
-        </li>
-        <li>
-          <Link to="/math">Math</Link>
-        </li>
-      </ul>
+      <h2>Who is Playing?</h2>
+
+      <div className="userButtons">
+        <button className="rayelle" onClick={() => onUserChange("rayelle")}>
+          Rayelle
+        </button>
+        <button className="abigail" onClick={() => onUserChange("abigail")}>
+          Abigail
+        </button>
+      </div>
     </div>
   );
 };

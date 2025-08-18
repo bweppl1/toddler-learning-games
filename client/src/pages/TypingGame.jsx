@@ -3,7 +3,7 @@ import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 import wordCompleteSound from "../assets/sounds/word_completed.wav";
 
-const TypingGame = () => {
+const TypingGame = ({ addPoints }) => {
   const [word, setWord] = useState("");
   const [typedLetters, setTypedLetters] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,6 +29,11 @@ const TypingGame = () => {
     "help",
     "walk",
     "car",
+    "apple",
+    "Grandma",
+    "Grandpa",
+    "Pilon",
+    "Weppler",
   ];
 
   // typing feedback sounds
@@ -52,7 +57,6 @@ const TypingGame = () => {
 
       // Ignore non-alpha key presses
       if (!e.code.startsWith("Key")) {
-        number;
         return;
       }
 
@@ -63,10 +67,11 @@ const TypingGame = () => {
       const sound = correctKeyPress ? audio.correct : audio.incorrect;
       sound.currentTime = 0;
 
-      // If word is complete, play celebration sound
+      // Correct word tasks: sound, add points
       if (correctKeyPress && currentIndex === word.length - 1) {
         audio.wordComplete.currentTime = 0;
         audio.wordComplete.play();
+        addPoints(1);
       } else {
         sound.play();
       }

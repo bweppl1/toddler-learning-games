@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 
-const MathGame = () => {
+const MathGame = ({ addPoints }) => {
   const [number1, setNumber1] = useState(null);
   const [number2, setNumber2] = useState(null);
   const [equation, setEquation] = useState("");
@@ -44,6 +44,7 @@ const MathGame = () => {
     if (isCorrect) {
       audio.correct.currentTime = 0;
       audio.correct.play();
+      addPoints(1);
 
       setTimeout(() => {
         generateEquation();
