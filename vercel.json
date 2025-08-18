@@ -9,6 +9,5 @@
   ],
   "routes": [
     { "src": "/.*", "dest": "client/index.html" }
-  ],
-  "ignore": ["server/**"] 
+  ]
 }
