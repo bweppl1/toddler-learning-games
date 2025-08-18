@@ -2,13 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/**/*",
+      "src": "client/**/*",
       "use": "@vercel/static-build",
       "config": { "distDir": "build" }
     }
   ],
   "routes": [
-    { "src": "/.*", "dest": "frontend/index.html" }
+    { "src": "/.*", "dest": "client/index.html" }
   ],
-  "ignore": ["backend/**"] 
+  "ignore": ["server/**"] 
 }
