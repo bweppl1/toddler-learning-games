@@ -34,6 +34,7 @@ const SpellingGame = ({ addPoints }) => {
     const randomWord = availableWords[Math.floor(Math.random() * words.length)];
     setPreviousWord(randomWord);
     setWordToSpell(randomWord);
+    console.log(wordToSpell);
   };
 
   const handleSubmit = (e) => {
