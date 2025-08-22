@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import MathGame from "./pages/MathGame";
 import TypingGame from "./pages/TypingGame";
 import SpellingGame from "./pages/SpellingGame";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const App = () => {
   const games = [

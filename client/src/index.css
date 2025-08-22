@@ -11,11 +11,13 @@
   --font: #393d3fff;
   --background: white;
   --background-light: whitesmokes;
-  --green: #9cc4b2ff;
+  --green: #b8e6d3ff;
+  --green-medium: #9dd4c1ff;
   --purple: #c98ca7ff;
   --pink: #e76d83ff;
   --pink-light: #fce4ecff;
   --blue: #e3f2fdff;
+  --blue-medium: rgb(206, 227, 243);
 }
 
 * {
@@ -64,10 +66,55 @@ h1, h2, h3 {
   margin: 15px;
 }
 
-/* NAVBAR */
+/* AUTH */
 
-a.title {
+div.authContainer {
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  padding: 50px 100px;
+  margin: 50px auto;
+  width: 30%;
+  min-width: 300px;
+  box-shadow: 4px 8px 12px rgba(141, 141, 141, 0.05);
+}
+
+div.authContainer h2 {
+  color: var(--pink);
+}
+
+div.authContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div.authContainer button.authButton {
+  background-color: var(--blue);
+  border: 0;
+  border-radius: 10px;
+  padding: 15px 30px;
+  margin: 10px auto;
+}
+
+div.authContainer button.authButton:hover {
+  background-color: var(--green);
+}
+
+div.authContainer label {
+  font-weight: 700;
+}
+
+div.authContainer input {
+  border: 0;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 10px;
   color: var(--font);
+}
+
+div.authContainer input:focus {
+  border: 2px solid var(--blue);
+  outline: none;
 }
 
 div.navBar {
@@ -97,7 +144,8 @@ div.navBar-right a:hover {
 }
 
 button.navLink {
-  background-color: var(--pink);
+  background-color: var(--blue);
+  font-weight: 700;
   border: 0;
   border-radius: 10px;
   padding: 15px;
@@ -105,7 +153,7 @@ button.navLink {
 }
 
 button.navLink:hover {
-  background-color: var(--green);
+  background-color: var(--blue-medium);
 }
 
 
@@ -152,12 +200,13 @@ div.gamesBox {
 
 div.gameCard {
   background-color: white;
-  border: 3px solid;
-  border-image: linear-gradient(135deg, #e3f2fd, var(--pink-light)) 1;
+  border: 1px solid whitesmoke;
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
-  box-shadow: 4px 8px 12px rgba(233, 43, 131, 0.05);
+  box-shadow: 
+  0 0 0 3px transparent,
+  4px 8px 12px rgba(233, 43, 131, 0.15);
 }
 
 div.gameCard button.playButton {
@@ -169,7 +218,8 @@ div.gameCard button.playButton {
 }
 
 div.gameCard button.playButton:hover {
-background-color: var(--pink-light);
+  background-color: var(--blue-medium);
+  font-weight: 700;
   padding: 20px 55px;
   transition: all 0.3s ease;
 }
@@ -199,7 +249,7 @@ button.nextWordButton {
 }
 
 button.nextWordButton:hover {
-  background-color: var(--pink);
+  background-color: var(--green-medium);
   padding: 15px 45px;
   transition: all 0.3s ease;
 }

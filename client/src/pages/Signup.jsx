@@ -1,15 +1,12 @@
-import axois from "axios";
-
-const Login = () => {
+const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
   return (
-    <div className="login">
+    <div className="signup">
       <div className="container">
         <div className="authContainer">
-          <h2>Login</h2>
+          <h2>Sign-up</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
             <input
@@ -28,7 +25,7 @@ const Login = () => {
               required
             />
             <button type="submit" className="authButton">
-              Login
+              Sign-up
             </button>
           </form>
         </div>
@@ -37,4 +34,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
