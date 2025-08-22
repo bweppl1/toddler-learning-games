@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.VITE_BASE_PATH || "/toddler-learning-games",
+  base: process.env.VITE_BASE_PATH || "/", // may need to update for deployment
   build: {
     outDir: "dist",
     emptyOutDir: true,

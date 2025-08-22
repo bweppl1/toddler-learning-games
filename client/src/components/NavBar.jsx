@@ -1,31 +1,25 @@
 import { Link } from "react-router-dom";
 
-const NavBar = ({ currentUser }) => {
+const NavBar = () => {
   return (
     <div className="navBar">
-      <h1>
-        <Link to="/" className="title">
-          {currentUser.toUpperCase()}'s Games
-        </Link>
-      </h1>
+      <div className="container">
+        <div className="navBar-left">
+          <h1>
+            <Link to="/" className="title">
+              🎓 Toddler Learning
+            </Link>
+          </h1>
+        </div>
 
-      <ul className="navLinks">
-        <li>
-          <Link to="/typing">
-            <button className="navLink">Typing</button>
+        <div className="navBar-right">
+          <Link to="/">
+            <button className="navLink">Home</button>
           </Link>
-        </li>
-        <li>
-          <Link to="/spelling">
-            <button className="navLink">Spelling</button>
-          </Link>
-        </li>
-        <li>
-          <Link to="/math">
-            <button className="navLink">Math</button>
-          </Link>
-        </li>
-      </ul>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Sign-up</Link>
+        </div>
+      </div>
     </div>
   );
 };

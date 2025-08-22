@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/word_completed.wav";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 
-const SpellingGame = ({ addPoints }) => {
+const SpellingGame = () => {
   const [wordToSpell, setWordToSpell] = useState("");
   const [previousWord, setPreviousWord] = useState("");
   const [userSpelling, setUserSpelling] = useState("");
@@ -15,6 +15,7 @@ const SpellingGame = ({ addPoints }) => {
     incorrect: new Audio(incorrectSound),
   });
 
+  // word list
   const words = [
     "apple",
     "mom",
@@ -31,10 +32,11 @@ const SpellingGame = ({ addPoints }) => {
     const availableWords = words.filter(
       (w) => w !== previousWord.toLowerCase()
     );
-    const randomWord = availableWords[Math.floor(Math.random() * words.length)];
+    const randomWord =
+      availableWords[Math.floor(Math.random() * availableWords.length)];
     setPreviousWord(randomWord);
     setWordToSpell(randomWord);
-    console.log(wordToSpell);
+    console.log(randomWord);
   };
 
   const handleSubmit = (e) => {
@@ -51,7 +53,6 @@ const SpellingGame = ({ addPoints }) => {
         message: "Correct!",
         isCorrect,
       });
-      addPoints(1);
 
       setTimeout(() => {
         generateWord();
@@ -83,27 +84,31 @@ const SpellingGame = ({ addPoints }) => {
   }, []);
   return (
     <div className="spellingGame">
-      <h2>Spelling Game</h2>
-      <div className="wordToSpell">{wordToSpell}</div>
-      <div className="spellingDisplay">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={userSpelling}
-            onChange={(e) => setUserSpelling(e.target.value)}
-            className="userSpelling"
-          ></input>
-        </form>
-      </div>
-      {spellingFeedback.message && (
-        <div
-          className={`answerFeedback ${
-            spellingFeedback.isCorrect ? "correct" : "incorrect"
-          }`}
-        >
-          {spellingFeedback.message}
+      <div className="gameContainer">
+        <h2>Spelling Game</h2>
+        <div className="wordToSpell">
+          <p>-- sounds placeholder --</p>
         </div>
-      )}
+        <div className="spellingDisplay">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={userSpelling}
+              onChange={(e) => setUserSpelling(e.target.value)}
+              className="userSpelling"
+            ></input>
+          </form>
+        </div>
+        {spellingFeedback.message && (
+          <div
+            className={`answerFeedback ${
+              spellingFeedback.isCorrect ? "correct" : "incorrect"
+            }`}
+          >
+            {spellingFeedback.message}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 import wordCompleteSound from "../assets/sounds/word_completed.wav";
 
-const TypingGame = ({ addPoints }) => {
+const TypingGame = () => {
   const [word, setWord] = useState("");
   const [typedLetters, setTypedLetters] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,7 +71,6 @@ const TypingGame = ({ addPoints }) => {
       if (correctKeyPress && currentIndex === word.length - 1) {
         audio.wordComplete.currentTime = 0;
         audio.wordComplete.play();
-        addPoints(1);
       } else {
         sound.play();
       }
@@ -133,13 +132,17 @@ const TypingGame = ({ addPoints }) => {
 
   return (
     <div className="typingGame">
-      <h2>Typing Game</h2>
-      <div className="typingGameWord">{renderWord()}</div>
-      {currentIndex >= word.length && word && (
-        <button className="nextWordButton" onClick={handleNextWord}>
-          Next Word
-        </button>
-      )}
+      <div className="container">
+        <div className="gameContainer">
+          <h2>Typing Game</h2>
+          <div className="typingGameWord">{renderWord()}</div>
+          {currentIndex >= word.length && word && (
+            <button className="nextWordButton" onClick={handleNextWord}>
+              Next Word
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 
-const MathGame = ({ addPoints }) => {
+const MathGame = () => {
   const [number1, setNumber1] = useState(null);
   const [number2, setNumber2] = useState(null);
   const [equation, setEquation] = useState("");
@@ -44,7 +44,6 @@ const MathGame = ({ addPoints }) => {
     if (isCorrect) {
       audio.correct.currentTime = 0;
       audio.correct.play();
-      addPoints(1);
 
       setTimeout(() => {
         generateEquation();
@@ -83,27 +82,29 @@ const MathGame = ({ addPoints }) => {
 
   return (
     <div className="mathGame">
-      <h2>Math Game</h2>
-      <div className="equationDisplay">
-        <p className="equation">{equation}</p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="userAnswer"
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)}
-          ></input>
-        </form>
-      </div>
-      {answerFeedback.message && (
-        <div
-          className={`answerFeedback ${
-            answerFeedback.isCorrect ? "correct" : "incorrect"
-          }`}
-        >
-          {answerFeedback.message}
+      <div className="gameContainer">
+        <h2>Math Game</h2>
+        <div className="equationDisplay">
+          <p className="equation">{equation}</p>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="userAnswer"
+              value={userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+            ></input>
+          </form>
         </div>
-      )}
+        {answerFeedback.message && (
+          <div
+            className={`answerFeedback ${
+              answerFeedback.isCorrect ? "correct" : "incorrect"
+            }`}
+          >
+            {answerFeedback.message}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
