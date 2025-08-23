@@ -186,8 +186,19 @@ div.landingBox h1 {
 }
 
 div.landingBox p {
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin: 20px;
+}
+
+div.landingBox a {
+  font-weight: 700;
+  color: var(--pink);
+  border-bottom: 2px solid var(--pink);
+}
+
+div.landingBox a:hover {
+  color: var(--blue-medium);
+  border-bottom: 2px solid var(--blue-medium);
 }
 
 /* GAME CARDS */
