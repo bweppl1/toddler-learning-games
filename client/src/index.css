@@ -1,0 +1,348 @@
+/* 
+  --onyx: #393d3fff;
+  --pale-dogwood: #d5bbb1ff;
+  --cambridge-blue: #9cc4b2ff;
+  --puce: #c98ca7ff;
+  --bright-pink-crayola: #e76d83ff; */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+  --font: #393d3fff;
+  --background: white;
+  --background-light: whitesmokes;
+  --green: #b8e6d3ff;
+  --green-medium: #9dd4c1ff;
+  --purple: #c98ca7ff;
+  --pink: #e76d83ff;
+  --pink-light: #fce4ecff;
+  --blue: #e3f2fdff;
+  --blue-medium: rgb(206, 227, 243);
+}
+
+* {
+  color: var(--font);
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-light);
+  min-height: 100vh;
+}
+
+/* Container for consistent spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+div.gameContainer {
+  background-color: white;
+  border: 1px solid var(--pink-light);
+  border-radius: 10px;
+  box-shadow: 4px 8px 12px rgba(233, 43, 131, 0.05);
+  margin: 50px;
+  padding: 50px 200px;
+  min-height: 300px;
+}
+
+div.body {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  padding: 0;
+  margin: 15px;
+}
+
+/* AUTH */
+
+div.authContainer {
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  padding: 50px 100px;
+  margin: 50px auto;
+  width: 30%;
+  min-width: 300px;
+  box-shadow: 4px 8px 12px rgba(141, 141, 141, 0.05);
+}
+
+div.authContainer h2 {
+  color: var(--pink);
+}
+
+div.authContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div.authContainer button.authButton {
+  background-color: var(--blue);
+  border: 0;
+  border-radius: 10px;
+  padding: 15px 30px;
+  margin: 10px auto;
+}
+
+div.authContainer button.authButton:hover {
+  background-color: var(--green);
+}
+
+div.authContainer label {
+  font-weight: 700;
+}
+
+div.authContainer input {
+  border: 0;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--font);
+}
+
+div.authContainer input:focus {
+  border: 2px solid var(--blue);
+  outline: none;
+}
+
+div.navBar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 2px 2px 5px rgba(233, 43, 131, 0.05);
+}
+
+div.navBar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+div.navBar-right a {
+  margin-right: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+div.navBar-right a:hover {
+  color: var(--pink);
+}
+
+button.navLink {
+  background-color: var(--blue);
+  font-weight: 700;
+  border: 0;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px;
+}
+
+button.navLink:hover {
+  background-color: var(--blue-medium);
+}
+
+
+
+div.pages {
+  background-color: var(--background-light);
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* HOME */
+
+div.Home {
+  text-align: center;
+}
+
+div.landingBox {
+  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 50%, #fce4ec 100%);
+  box-shadow: 2px 2px 5px rgba(233, 43, 131, 0.05);
+  border-radius: 10px;
+  padding: 100px 100px;
+  margin: 20px;
+}
+
+div.landingBox h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+div.landingBox p {
+  font-size: 1rem;
+  margin: 20px;
+}
+
+div.landingBox a {
+  font-weight: 700;
+  color: var(--pink);
+  border-bottom: 2px solid var(--pink);
+}
+
+div.landingBox a:hover {
+  color: var(--blue-medium);
+  border-bottom: 2px solid var(--blue-medium);
+}
+
+/* GAME CARDS */
+
+div.gamesBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+div.gameCard {
+  background-color: white;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 
+  0 0 0 3px transparent,
+  4px 8px 12px rgba(233, 43, 131, 0.15);
+}
+
+div.gameCard button.playButton {
+  background-color: var(--pink);
+  border: 0;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px 50px;
+}
+
+div.gameCard button.playButton:hover {
+  background-color: var(--blue-medium);
+  font-weight: 700;
+  padding: 20px 55px;
+  transition: all 0.3s ease;
+}
+
+div.gameCard h3 {
+  font-weight: 900;
+  margin: 5px;
+}
+
+/* TYPING GAME  */
+
+div.typingGame, div.mathGame, div.spellingGame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+button.nextWordButton {
+  background-color: var(--green);
+  padding: 15px 40px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+
+button.nextWordButton:hover {
+  background-color: var(--green-medium);
+  padding: 15px 45px;
+  transition: all 0.3s ease;
+}
+
+span.typedLetter, span.untypedLetter {
+  font-size: 7rem;
+  padding: 0;
+  margin: 0;
+}
+
+span.typedLetter {
+  color: var(--pink);
+}
+
+span.untypedLetter {
+  color: var(--pink-light);
+}
+
+span.currentLetter {
+  text-decoration: underline;
+}
+
+/* MATH GAME  */
+
+div.mathGame {
+  margin: auto;
+}
+
+p.equation {
+  font-size: 7rem;
+}
+
+div.equationDisplay {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+input.userAnswer {
+  font-size: 7rem;
+  width: 200px;
+  text-align: center;
+  border: 0;
+  margin: 0 15px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+
+.userAnswer:focus {
+  caret-color: whitesmoke;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--background);
+}
+
+div.answerFeedback {
+  font-size: 4rem;
+}
+
+div.correct {
+  color: rgb(20, 202, 20);
+}
+
+div.incorrect {
+  color: red;
+}
+
+/* SPELLING GAME  */
+
+input.userSpelling {
+  color: var(--pink);
+  font-size: 7rem;
+  width: 600px;
+  text-align: center;
+  border: 0;
+  margin: 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+
+input.userSpelling:focus {
+  caret-color: var(--pink);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--background);
+}
