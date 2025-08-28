@@ -66,6 +66,14 @@ h1, h2, h3 {
   margin: 15px;
 }
 
+div.error {
+  border: 1px solid red;
+  background-color: var(--pink-light);
+  padding: 10px;
+  color: red;
+  text-align: center;
+}
+
 /* AUTH */
 
 div.authContainer {
@@ -131,6 +139,28 @@ div.navBar .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+div.navBar-right {
+  display: flex;
+  align-items: center;
+}
+
+span.user-email {
+  margin-right: 20px;
+}
+
+button.logout-button {
+  border: 2px solid var(--pink);
+  padding: 10px 20px;
+  background-color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--pink);
+}
+
+button.logout-button:hover {
+  text-decoration: underline;
 }
 
 div.navBar-right a {

@@ -1,10 +1,16 @@
-import axois from "axios";
+import { useState } from "react";
+import { useLogin } from "../hooks/useLogin.jsx";
 
 const Login = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, isLoading, error } = useLogin();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await login(email, password);
+  };
   return (
     <div className="login">
       <div className="container">
@@ -14,6 +20,8 @@ const Login = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               id="email"
               name="email"
               placeholder="Email"
@@ -22,14 +30,17 @@ const Login = () => {
             <label htmlFor="password">Password</label>
             <input
               type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               id="password"
               name="password"
               placeholder="Password"
               required
             />
-            <button type="submit" className="authButton">
+            <button disabled={isLoading} type="submit" className="authButton">
               Login
             </button>
+            {error && <div className="error">{error}</div>}
           </form>
         </div>
       </div>
