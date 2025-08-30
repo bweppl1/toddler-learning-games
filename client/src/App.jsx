@@ -6,6 +6,7 @@ import TypingGame from "./pages/TypingGame";
 import SpellingGame from "./pages/SpellingGame";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const games = [
@@ -46,6 +47,7 @@ const App = () => {
                 <Route path="/math" element={<MathGame />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/profile" element={<Profile />} />
               </Routes>
             </div>
           </div>

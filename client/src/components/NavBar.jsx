@@ -26,7 +26,9 @@ const NavBar = () => {
           </Link>
           {user && (
             <div>
-              <span className="user-email">{user.email}</span>
+              <Link to="/profile">
+                <span className="user-email">{user.email}</span>
+              </Link>
               <button className="logout-button" onClick={handleClick}>
                 Logout
               </button>

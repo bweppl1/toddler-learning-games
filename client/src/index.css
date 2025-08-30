@@ -41,7 +41,7 @@ body {
 
 div.gameContainer {
   background-color: white;
-  border: 1px solid var(--pink-light);
+  border: 1px solid whitesmoke;
   border-radius: 10px;
   box-shadow: 4px 8px 12px rgba(233, 43, 131, 0.05);
   margin: 50px;
@@ -195,6 +195,64 @@ div.pages {
   max-width: 1200px;
   padding: 0 20px;
 }
+
+/* PROFILE */
+
+div.Profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+div.profileContainer {
+  background-color: white;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  box-shadow: 4px 8px 12px rgba(233, 43, 131, 0.05);
+  padding: 20px;
+  min-height: 300px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+div.profile-header, div.profile-progress, div.profile-achievements {
+  padding: 20px;
+  border-bottom: 1px solid whitesmoke;
+}
+
+div.profile-header h1 {
+  margin: 0;
+  color: var(--pink);
+}
+
+button.reset-profile-button {
+  background-color: var(--pink-light);
+  border: 1px solid red;
+  color: red;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 20px;
+}
+
+div.progress-bar {
+  border: 2px solid black;
+  background-color: white;
+  height: 20px;
+  width: 500px;
+}
+
+div.progress-bar-fill {
+  border: 0;
+  background-color: var(--pink-light);
+  /* background: linear-gradient(to right, var(--green-medium), var(--green)); */
+  height: 100%;  
+}
+
 
 /* HOME */
 
