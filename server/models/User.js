@@ -89,7 +89,7 @@ userSchema.statics.signup = async function (email, username, password) {
   const usernameExists = await this.findOne({ username });
 
   if (usernameExists) {
-    throw Error(`${username} has been taken!`);
+    throw Error(`The username ${username} has been taken!`);
   }
 
   // password hashing

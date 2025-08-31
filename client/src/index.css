@@ -179,7 +179,7 @@ button.navLink {
   border: 0;
   border-radius: 10px;
   padding: 15px;
-  margin: 15px;
+  margin: 15px 0;
 }
 
 button.navLink:hover {
@@ -240,15 +240,17 @@ button.reset-profile-button {
 }
 
 div.progress-bar {
-  border: 2px solid black;
+  border: 2px solid var(--pink);
+  border-radius: 10px;
   background-color: white;
-  height: 20px;
+  height: 30px;
   width: 500px;
 }
 
 div.progress-bar-fill {
   border: 0;
   background-color: var(--pink-light);
+  border-radius: 10px 0 0 10px;
   /* background: linear-gradient(to right, var(--green-medium), var(--green)); */
   height: 100%;  
 }
@@ -289,6 +291,10 @@ div.landingBox a:hover {
   border-bottom: 2px solid var(--blue-medium);
 }
 
+span.welcome-name {
+  color: var(--pink);
+}
+
 /* GAME CARDS */
 
 div.gamesBox {
@@ -309,7 +315,7 @@ div.gameCard {
 }
 
 div.gameCard button.playButton {
-  background-color: var(--pink);
+  background-color: var(--pink-light);
   border: 0;
   border-radius: 10px;
   margin: 10px;
