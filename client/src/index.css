@@ -125,11 +125,17 @@ div.authContainer input:focus {
   outline: none;
 }
 
+/* NAVBAR */
+
+a.title {
+  color: var(--font);
+}
+
 div.navBar {
   background-color: white;
   display: flex;
   justify-content: space-between;
-  box-shadow: 2px 2px 5px rgba(233, 43, 131, 0.05);
+  position: relative;
 }
 
 div.navBar .container {
@@ -141,13 +147,119 @@ div.navBar .container {
   margin: 0 auto;
 }
 
-div.navBar-right {
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--font);
+  border-radius: 3px;
+}
+
+
+/* Desktop Navigation */
+.navBar-right {
   display: flex;
   align-items: center;
 }
 
-span.user-email {
-  margin-right: 20px;
+.user-menu, .auth-menu {
+  display: flex;
+  align-items: center;
+}
+
+/* RESPONSIVE STYLING */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navBar-right {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    border-left: 1px solid whitesmoke;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 50px 0;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+
+  .navBar-right.menu-open {
+    right: 0;
+  }
+
+  .user-menu, .auth-menu {
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .menu-open a.navLink {
+    border: 0;
+    margin: 0;
+    padding: 15px;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--font);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+  }
+
+  .menu-open a.navLink:hover {
+    background-color: var(--pink-light);
+    font-size: 1.1rem;
+  }
+
+  .menu-open button.logout-button {
+    border: 1px solid var(--pink);
+    margin: 15px;
+    padding: 15px;
+    background-color: #fff;
+    /* width: 100%;
+    height: 100%; */
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--pink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+  }
+
+  .menu-open button.logout-button:hover {
+    background-color: var(--pink-light);
+  }
+
+  .menu-open a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
 }
 
 button.logout-button {
@@ -156,6 +268,7 @@ button.logout-button {
   background-color: #fff;
   font-weight: 700;
   font-size: 1rem;
+  margin: 10px;
   color: var(--pink);
 }
 
@@ -163,30 +276,31 @@ button.logout-button:hover {
   text-decoration: underline;
 }
 
-div.navBar-right a {
-  margin-right: 20px;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-div.navBar-right a:hover {
-  color: var(--pink);
-}
-
-button.navLink {
+a.navLink {
+  box-sizing: border-box;
   background-color: var(--blue);
   font-weight: 700;
   border: 0;
   border-radius: 10px;
   padding: 15px;
-  margin: 15px 0;
+  margin: 10px;
 }
 
-button.navLink:hover {
+a.navLink:hover {
   background-color: var(--blue-medium);
+  color: black;
 }
 
+a.navAuthLink {
+  background: none;
+  border: 0;
+  padding: 10px;
+  color: var(--font);
+}
 
+a.navAuthLink:hover {
+  color: var(--pink);
+}
 
 div.pages {
   background-color: var(--background-light);
@@ -375,6 +489,85 @@ span.untypedLetter {
 
 span.currentLetter {
   text-decoration: underline;
+}
+
+
+/* GAME SETTINGS */
+div.settings-menu {
+  border: 1px solid whitesmoke;
+  box-shadow: 4px 8px 12px rgba(233, 43, 131, 0.05);
+  border-radius: 10px;
+  padding: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+div.settings-header {
+  background-color: var(--blue-medium);
+  border: 0;
+  border-radius: 10px 10px 0 0;
+  padding: 15px;
+  text-align: center;
+}
+
+div.settings-content {
+  padding: 20px;
+}
+
+div.settings-section {
+  margin: 10px 0;
+}
+
+button.settings-button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+div.settings-menu h2, div.settings-menu h3 {
+  margin: 10px 0;
+}
+
+input.add-word-input {
+  border: 1px solid whitesmoke;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+input.add-word-input:focus {
+  outline: 1px solid var(--pink);
+}
+
+button.add-word-button {
+  border: 1px solid var(--green-medium);
+  color: var(--font);
+  font-weight: 700;
+  padding: 5px 10px;
+  background-color: #fff;
+  margin: 5px 0;
+  width: fit-content;
+}
+
+button.add-word-button:hover {
+  background-color: var(--green);
+  cursor: pointer;
+}
+
+button.remove-word-button {
+  border: 1px solid var(--pink);
+  color: var(--pink);
+  font-weight: 700;
+  padding: 5px 10px;
+  background-color: #fff;
+  margin: 5px;
+}
+
+button.remove-word-button:hover {
+  background-color: var(--pink-light);
+  cursor: pointer;
 }
 
 /* MATH GAME  */
