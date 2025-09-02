@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 import wordCompleteSound from "../assets/sounds/word_completed.wav";
-import WordItem from "../components/WordItem.jsx";
 
 const TypingGame = () => {
   const [word, setWord] = useState("");
@@ -20,12 +19,16 @@ const TypingGame = () => {
 
   // sets wordList and generate a word on page load
   useEffect(() => {
-    const wordList = JSON.parse(localStorage.getItem("typingGameWordList"));
+    const localWordList = JSON.parse(
+      localStorage.getItem("typingGameWordList")
+    );
 
-    if (!wordList) {
-      setWordList(["dog"]);
+    if (!localWordList) {
+      generateWord();
+      return;
     }
-    setWordList(wordList);
+
+    setWordList(localWordList);
 
     generateWord();
   }, []);
@@ -43,6 +46,8 @@ const TypingGame = () => {
   // key press handling
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Ignore key presses when settings menu is open **BUG** -> first keypress still triggers game feedback
+      if (showSettings) return;
       // Move to next word with Enter key
       if (currentIndex >= word.length && e.key === "Enter") {
         handleNextWord();
@@ -147,6 +152,9 @@ const TypingGame = () => {
     // generate new word to avoid displaying a removed word
     generateWord();
   };
+
+  // Testing
+  console.log(`wordList: ${wordList}`);
 
   return (
     <div className="typingGame">

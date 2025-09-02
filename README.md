@@ -1,34 +1,5 @@
 TO-DO
 
-Typing Game
+**Bugs**
 
-[X] Sounds for in/correct letter press, word completion
-[ ] Souds for the word
-[ ] duplicate words
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-
-Spelling Game
-
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-
-Math Game
-
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
+- typingGame -> when settings is open, first key presses triggers game feedback

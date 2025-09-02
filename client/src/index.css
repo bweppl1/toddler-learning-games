@@ -499,6 +499,7 @@ div.settings-menu {
   border-radius: 10px;
   padding: 0;
   margin: auto;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -587,19 +588,19 @@ div.equationDisplay {
   text-align: center;
 }
 
-input.userAnswer {
+input.mathAnswerInput {
   font-size: 7rem;
   width: 200px;
   text-align: center;
   border: 0;
   margin: 0 15px;
   border-radius: 20px;
-  background-color: whitesmoke;
+  background-color: var(--pink-light);
 }
 
-.userAnswer:focus {
-  caret-color: whitesmoke;
-  outline: none;
+.mathAnswerInput:focus {
+  caret-color: var(--pink);
+  outline: 2px solid var(--pink);
   box-shadow: 0 0 0 3px var(--background);
 }
 
