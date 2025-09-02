@@ -532,6 +532,8 @@ div.settings-menu h2, div.settings-menu h3 {
   margin: 10px 0;
 }
 
+
+/* TYPING SETTINGS */
 input.add-word-input {
   border: 1px solid whitesmoke;
   padding: 5px;
@@ -569,6 +571,27 @@ button.remove-word-button {
 button.remove-word-button:hover {
   background-color: var(--pink-light);
   cursor: pointer;
+}
+
+/* MATH SETTINGS */
+
+input.number-range-input {
+color: var(--font);
+  border: 1px solid whitesmoke;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+input.number-range-input:focus {
+  outline: 1px solid var(--pink);
+}
+
+select.operation-select {
+  border: 1px solid whitesmoke;
+  background-color: #fff;
+  padding: 5px;
+  margin-right: 10px;
+  color: var(--font);
 }
 
 /* MATH GAME  */
@@ -618,19 +641,24 @@ div.incorrect {
 
 /* SPELLING GAME  */
 
-input.userSpelling {
-  color: var(--pink);
+input.userSpellingInput {
+  color: var(--font);
   font-size: 7rem;
   width: 600px;
   text-align: center;
   border: 0;
   margin: 30px;
   border-radius: 20px;
-  background-color: whitesmoke;
+  background-color: var(--pink-light);
 }
 
-input.userSpelling:focus {
+input.userSpellingInput:focus {
   caret-color: var(--pink);
-  outline: none;
-  box-shadow: 0 0 0 3px var(--background);
+  outline: 2px solid var(--pink);
+}
+
+button.hear-word-button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 }

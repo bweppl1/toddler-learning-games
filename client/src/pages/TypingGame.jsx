@@ -182,7 +182,7 @@ const TypingGame = () => {
 
               <div className="settings-content">
                 <div className="settings-section">
-                  <h3>Add Word</h3>
+                  <h3>Add Custom Word</h3>
                   <input
                     type="text"
                     placeholder="Add New Word"
@@ -195,7 +195,7 @@ const TypingGame = () => {
                   </button>
                 </div>
                 <div className="settings-section">
-                  <h3>Word List</h3>
+                  <h3>Custom Word List</h3>
                   {wordList.map((word) => (
                     <div className="word-item" key={word}>
                       <span>{word}</span>

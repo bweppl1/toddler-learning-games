@@ -27,10 +27,10 @@ const MathGame = () => {
     };
   }, [audio]);
 
-  // generating two numbers 1-10
+  // generating two numbers
   const generateEquation = () => {
     setNumber1(Math.floor(Math.random() * numberRange));
-    setNumber2(Math.floor(Math.random() * numberRange));
+    setNumber2(Math.ceil(Math.random() * numberRange));
   };
 
   // handling answer submissions
@@ -130,6 +130,7 @@ const MathGame = () => {
               <div className="settings-section">
                 <h3>Number Range</h3>
                 <input
+                  className="number-range-input"
                   type="number"
                   value={numberRange}
                   onChange={(e) => setNumberRange(e.target.value)}
@@ -137,6 +138,7 @@ const MathGame = () => {
 
                 <h3>Operation</h3>
                 <select
+                  className="operation-select"
                   value={operation}
                   onChange={(e) => setOperation(e.target.value)}
                 >

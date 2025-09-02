@@ -28,6 +28,40 @@ const SpellingGame = () => {
     "jayce",
   ];
 
+  // TTS function
+  const speakWord = (word) => {
+    if ("speechSynthesis" in window) {
+      // Cancel any ongoing speech
+      window.speechSynthesis.cancel();
+
+      // Create speech utterance
+      const utterance = new SpeechSynthesisUtterance(word);
+
+      // Configure TTS settings
+      utterance.rate = 0.8; // Slightly slower for clarity
+      utterance.pitch = 1.0; // Normal pitch
+      utterance.volume = 1.0; // Full volume
+
+      // Try to use a child-friendly voice
+      const voices = window.speechSynthesis.getVoices();
+      const childVoice = voices.find(
+        (voice) =>
+          voice.name.includes("Female") ||
+          voice.name.includes("Samantha") ||
+          voice.name.includes("Google UK English Female")
+      );
+
+      if (childVoice) {
+        utterance.voice = childVoice;
+      }
+
+      // Speak the word
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.log("Speech synthesis not supported");
+    }
+  };
+
   const generateWord = () => {
     const availableWords = words.filter(
       (w) => w !== previousWord.toLowerCase()
@@ -36,7 +70,11 @@ const SpellingGame = () => {
       availableWords[Math.floor(Math.random() * availableWords.length)];
     setPreviousWord(randomWord);
     setWordToSpell(randomWord);
-    console.log(randomWord);
+
+    // Speak the new word
+    speakWord(randomWord);
+
+    console.log(randomWord); //for debug
   };
 
   const handleSubmit = (e) => {
@@ -82,12 +120,35 @@ const SpellingGame = () => {
   useEffect(() => {
     generateWord();
   }, []);
+
+  // Initialize voices when component mounts
+  useEffect(() => {
+    const initializeVoices = () => {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.getVoices();
+      }
+    };
+
+    // Some browsers need a delay to load voices
+    setTimeout(initializeVoices, 100);
+
+    // Also listen for voices loaded event
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = initializeVoices;
+    }
+  }, []);
+
   return (
     <div className="spellingGame">
       <div className="gameContainer">
         <h2>Spelling Game</h2>
         <div className="wordToSpell">
-          <p>-- sounds placeholder --</p>
+          <button
+            className="hear-word-button"
+            onClick={() => speakWord(wordToSpell)}
+          >
+            <i class="fa-solid fa-music"></i>
+          </button>
         </div>
         <div className="spellingDisplay">
           <form onSubmit={handleSubmit}>
@@ -95,7 +156,7 @@ const SpellingGame = () => {
               type="text"
               value={userSpelling}
               onChange={(e) => setUserSpelling(e.target.value)}
-              className="userSpelling"
+              className="userSpellingInput"
             ></input>
           </form>
         </div>
