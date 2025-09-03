@@ -14,19 +14,14 @@ const SpellingGame = () => {
     correct: new Audio(correctSound),
     incorrect: new Audio(incorrectSound),
   });
+  const [showSettings, setShowSettings] = useState(false);
+  const [newWord, setNewWord] = useState("");
+  const [wordList, setWordList] = useState(["dad", "mom"]);
 
-  // word list
-  const words = [
-    "apple",
-    "mom",
-    "dad",
-    "fish",
-    "rayelle",
-    "dog",
-    "you",
-    "abigail",
-    "jayce",
-  ];
+  // open and close game settings menu
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+  };
 
   // TTS function
   const speakWord = (word) => {
@@ -63,7 +58,7 @@ const SpellingGame = () => {
   };
 
   const generateWord = () => {
-    const availableWords = words.filter(
+    const availableWords = wordList.filter(
       (w) => w !== previousWord.toLowerCase()
     );
     const randomWord =
@@ -118,6 +113,16 @@ const SpellingGame = () => {
 
   // Generate initial word
   useEffect(() => {
+    const localWordList = JSON.parse(
+      localStorage.getItem("spellingGameWordList")
+    );
+
+    if (!localWordList) {
+      generateWord();
+      return;
+    }
+
+    setWordList(localWordList);
     generateWord();
   }, []);
 
@@ -138,17 +143,109 @@ const SpellingGame = () => {
     }
   }, []);
 
+  // settings menu logic
+  // adding a custom word
+  const handleAddWord = (e) => {
+    e.preventDefault();
+    setNewWord(e.target.value);
+    if (!newWord) return;
+
+    setWordList([...wordList, newWord]);
+
+    localStorage.setItem(
+      "spellingGameWordList",
+      JSON.stringify([...wordList, newWord])
+    );
+  };
+
+  // removing a custom word **BUG** must check if < 2 words give warning and stop removal
+  const handleRemoveWord = (word) => {
+    const updatedSpellingWordList = wordList.filter((w) => w != word);
+    setWordList(updatedSpellingWordList);
+
+    localStorage.setItem(
+      "spellingGameWordList",
+      JSON.stringify(updatedSpellingWordList)
+    );
+  };
+
+  // generate a word whenever the word list changes
+  useEffect(() => {
+    generateWord();
+  }, [wordList]);
+
   return (
     <div className="spellingGame">
       <div className="gameContainer">
+        {/* game header */}
         <h2>Spelling Game</h2>
-        <div className="wordToSpell">
-          <button
-            className="hear-word-button"
-            onClick={() => speakWord(wordToSpell)}
-          >
-            <i class="fa-solid fa-music"></i>
-          </button>
+        <p>Practice spelling the word you hear!</p>
+
+        {/* settings icon */}
+        <button
+          className="settings-button"
+          onClick={toggleSettings}
+          aria-label="Game Settings"
+        >
+          <i className="fas fa-cog"></i>
+        </button>
+
+        {/* settings panel */}
+        {showSettings && (
+          <div className="settings-menu">
+            <div className="settings-header">
+              <h2>Settings</h2>
+            </div>
+
+            <div className="settings-content">
+              <div className="settings-section">
+                <h3>Add Custom Word</h3>
+                <input
+                  type="text"
+                  placeholder="Add New Word"
+                  className="add-word-input"
+                  value={newWord}
+                  onChange={(e) => setNewWord(e.target.value)}
+                />
+                <button className="add-word-button" onClick={handleAddWord}>
+                  + Add Word
+                </button>
+              </div>
+              <div className="settings-section">
+                <h3>Custom Word List</h3>
+                {wordList.map((word) => (
+                  <div className="word-item" key={word}>
+                    <span>{word}</span>
+                    <button
+                      className="remove-word-button"
+                      onClick={() => handleRemoveWord(word)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* game display */}
+        <div className="spellingGameControlsContainer">
+          <div className="spellingGameControlContainer">
+            <button
+              className="spellingGameControlIcon"
+              onClick={() => speakWord(wordToSpell)}
+            >
+              <i class="fa-solid fa-music"></i>
+            </button>
+            <span>Hear Word</span>
+          </div>
+          <div className="spellingGameControlContainer">
+            <button className="spellingGameControlIcon" onClick={generateWord}>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <span>Next Word</span>
+          </div>
         </div>
         <div className="spellingDisplay">
           <form onSubmit={handleSubmit}>

@@ -12,7 +12,7 @@ This app was built using the MERN stack and implements JWT authentication.
 
 ## To-Do
 
-1. Spelling game settings menu
+1. Spelling game -> check if < 2 words after removal, stop removal
 2. Spelling game, fix the terrible google tts voice
 3. Implement reward system(Points, Achievements)
 4. Implement reset profile

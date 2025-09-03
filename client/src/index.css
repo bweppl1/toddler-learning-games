@@ -657,7 +657,22 @@ input.userSpellingInput:focus {
   outline: 2px solid var(--pink);
 }
 
-button.hear-word-button {
+div.spellingGameControlsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+div.spellingGameControlContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 7px;
+  margin: 10px;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  box-shadow: 4px 8px 12px rgba(233, 43, 131, 0.05);
+}
+
+button.spellingGameControlIcon {
   border: 0;
   background-color: transparent;
   cursor: pointer;
