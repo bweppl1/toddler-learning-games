@@ -39,12 +39,7 @@ const SpellingGame = () => {
 
       // Try to use a child-friendly voice
       const voices = window.speechSynthesis.getVoices();
-      const childVoice = voices.find(
-        (voice) =>
-          voice.name.includes("Female") ||
-          voice.name.includes("Samantha") ||
-          voice.name.includes("Google UK English Female")
-      );
+      const childVoice = voices.find((voice) => voice.name.includes("Aoede"));
 
       if (childVoice) {
         utterance.voice = childVoice;
