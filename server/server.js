@@ -32,6 +32,3 @@ app.use(express.json());
 // routes
 //app.use("route address", route name)
 app.use("/api/user", userRoutes);
-
-// connect to DB
-// mongoose code
