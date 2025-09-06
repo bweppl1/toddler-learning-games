@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/word_completed.wav";
 import incorrectSound from "../assets/sounds/incorrect.wav";
+import { usePointsContext } from "../hooks/usePointsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const SpellingGame = () => {
+  // points and user context
+  const { updateSpellingPoints } = usePointsContext(); // import "points" when adding point display to game
+  const { user } = useAuthContext();
+
+  // states
   const [wordToSpell, setWordToSpell] = useState("");
   const [previousWord, setPreviousWord] = useState("");
   const [userSpelling, setUserSpelling] = useState("");
@@ -39,7 +46,14 @@ const SpellingGame = () => {
 
       // Try to use a child-friendly voice
       const voices = window.speechSynthesis.getVoices();
-      const childVoice = voices.find((voice) => voice.name.includes("Aoede"));
+      const childVoice = voices.find(
+        (voice) =>
+          voice.lang.includes("en-US") &&
+          (voice.name.includes("Samantha") ||
+            voice.name.includes("Alex") ||
+            voice.name.includes("Microsoft Zira") ||
+            voice.name.includes("Google US English"))
+      );
 
       if (childVoice) {
         utterance.voice = childVoice;
@@ -76,11 +90,16 @@ const SpellingGame = () => {
     sound.currentTime = 0;
     sound.play();
 
+    // **CORRECT** answer tasks: sound, add points etc.
     if (isCorrect) {
       setSpellingFeedback({
         message: "Correct!",
         isCorrect,
       });
+      updateSpellingPoints(1); // points +1
+      if (!user) {
+        console.log("User not logged in -- no progress will be saved");
+      }
 
       setTimeout(() => {
         generateWord();

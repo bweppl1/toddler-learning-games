@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
+import { usePointsContext } from "../hooks/usePointsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const MathGame = () => {
+  // points and user context
+  const { updateMathPoints } = usePointsContext(); // import "points" when adding point display to game
+  const { user } = useAuthContext();
+
+  // states
   const [number1, setNumber1] = useState(null);
   const [number2, setNumber2] = useState(null);
   const [equation, setEquation] = useState("");
@@ -49,11 +56,14 @@ const MathGame = () => {
       message: isCorrect ? "Correct!" : "Try Again!",
       isCorrect,
     });
-
+    // **CORRECT** answer tasks: sound, add points etc.
     if (isCorrect) {
       audio.correct.currentTime = 0;
       audio.correct.play();
-
+      updateMathPoints(1); // points +1
+      if (!user) {
+        console.log("User not logged in -- no progress will be saved");
+      }
       setTimeout(() => {
         generateEquation();
         setUserAnswer("");

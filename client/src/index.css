@@ -353,6 +353,13 @@ button.reset-profile-button {
   margin: 20px;
 }
 
+div.progress-bar-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 15px;
+}
+
 div.progress-bar {
   border: 2px solid var(--pink);
   border-radius: 10px;

@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import correctSound from "../assets/sounds/correct.mp3";
 import incorrectSound from "../assets/sounds/incorrect.wav";
 import wordCompleteSound from "../assets/sounds/word_completed.wav";
+import { usePointsContext } from "../hooks/usePointsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const TypingGame = () => {
+  // points and user context
+  const { updateTypingPoints } = usePointsContext(); // import "points" when adding point display to game
+  const { user } = useAuthContext();
+
+  // states
   const [word, setWord] = useState("");
   const [typedLetters, setTypedLetters] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,10 +73,15 @@ const TypingGame = () => {
       const sound = correctKeyPress ? audio.correct : audio.incorrect;
       sound.currentTime = 0;
 
-      // Correct word tasks: sound, add points etc.
+      // **CORRECT** word tasks: sound, add points etc.
       if (correctKeyPress && currentIndex === word.length - 1) {
-        audio.wordComplete.currentTime = 0;
-        audio.wordComplete.play();
+        audio.wordComplete.currentTime = 0; // reset correct sound
+        audio.wordComplete.play(); // correct sound
+        updateTypingPoints(1); // points +1
+        // console.log if no user is logged in
+        if (!user) {
+          console.log("User not logged in -- no progress will be saved");
+        }
       } else {
         sound.play();
       }

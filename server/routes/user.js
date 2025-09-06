@@ -10,6 +10,7 @@ import {
   updateSpellingPoints,
   resetUserPoints,
 } from "../controllers/pointController.js";
+import { requireAuth } from "../middleware/requireAuth.js";
 
 const router = express.Router();
 
@@ -17,20 +18,20 @@ const router = express.Router();
 router.post("/login", loginUser);
 router.post("/signup", signupUser);
 
-// Points routes
-router.get("/points", getAllUserPoints);
+// Points routes (with auth middleware)
+router.get("/points", requireAuth, getAllUserPoints);
 
-// Get specific game points
-router.get("/points/math", getMathPoints);
-router.get("/points/typing", getTypingPoints);
-router.get("/points/spelling", getSpellingPoints);
+// Get specific game points (with auth middleware)
+router.get("/points/math", requireAuth, getMathPoints);
+router.get("/points/typing", requireAuth, getTypingPoints);
+router.get("/points/spelling", requireAuth, getSpellingPoints);
 
-// Update specific game points
-router.patch("/points/math", updateMathPoints);
-router.patch("/points/typing", updateTypingPoints);
-router.patch("/points/spelling", updateSpellingPoints);
+// Update specific game points (with auth middleware)
+router.patch("/points/math", requireAuth, updateMathPoints);
+router.patch("/points/typing", requireAuth, updateTypingPoints);
+router.patch("/points/spelling", requireAuth, updateSpellingPoints);
 
-// Reset all points
-router.patch("/points/reset", resetUserPoints);
+// Reset all points (with auth middleware)
+router.patch("/points/reset", requireAuth, resetUserPoints);
 
 export default router;
