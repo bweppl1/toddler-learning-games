@@ -172,8 +172,14 @@ const SpellingGame = () => {
     );
   };
 
-  // removing a custom word **BUG** must check if < 2 words give warning and stop removal
+  // removing a custom word
   const handleRemoveWord = (word) => {
+    // maintaining 2 words on the list
+    if (wordList.length <= 2) {
+      alert("The word list must have at least 2 words.");
+      return;
+    }
+
     const updatedSpellingWordList = wordList.filter((w) => w != word);
     setWordList(updatedSpellingWordList);
 

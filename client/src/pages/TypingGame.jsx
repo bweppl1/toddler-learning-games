@@ -50,11 +50,12 @@ const TypingGame = () => {
     };
   }, [audio]);
 
-  // key press handling
+  // Handle key press
   useEffect(() => {
     const handleKeyDown = (e) => {
       // Ignore key presses when settings menu is open **BUG** -> first keypress still triggers game feedback
       if (showSettings) return;
+
       // Move to next word with Enter key
       if (currentIndex >= word.length && e.key === "Enter") {
         handleNextWord();
@@ -155,6 +156,12 @@ const TypingGame = () => {
   };
 
   const handleRemoveWord = (word) => {
+    // maintaining 2 words on the list
+    if (wordList.length <= 2) {
+      alert("The word list must have at least 2 words.");
+      return;
+    }
+
     const updatedWordList = wordList.filter((w) => w != word);
     setWordList(updatedWordList);
 

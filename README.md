@@ -10,6 +10,7 @@ This app was built using the MERN stack and implements JWT authentication.
 
 1. typingGame -> when settings is open, first key presses triggers game feedback
 2. Profile -> when refreshed "Uncaught TypeError: can't access property "username", user is null"
+3. typingGame -> in google chrome, "Next Word" button doesn't work \*\*\*too few words related to most recent word
 
 ## To-Do
 

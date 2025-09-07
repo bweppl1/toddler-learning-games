@@ -27,7 +27,7 @@ const NavBar = () => {
         <div className="navBar-left">
           <h1>
             <Link to="/" className="title" onClick={closeMenu}>
-              🎓 Toddler Learning
+              Toddler Learning
             </Link>
           </h1>
         </div>
